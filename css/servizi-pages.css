@@ -1,0 +1,307 @@
+/**
+ * Styles for Servizi and Location single and archive pages
+ */
+
+/* Archive page styles */
+.scb-archive-header {
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid #eee;
+}
+
+.scb-archive-header h1 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+}
+
+.scb-archive-description {
+    margin-bottom: 1em;
+    line-height: 1.6;
+}
+
+.scb-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 2em;
+    margin-bottom: 2em;
+}
+
+.scb-archive-item {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.scb-archive-item:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.scb-archive-item-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.scb-archive-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.scb-archive-item:hover .scb-archive-item-image img {
+    transform: scale(1.05);
+}
+
+.scb-archive-item-content {
+    padding: 1em;
+}
+
+.scb-archive-item-title {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+}
+
+.scb-archive-item-title a {
+    text-decoration: none;
+    color: #333;
+}
+
+.scb-archive-item-title a:hover {
+    color: #0073aa;
+}
+
+.scb-archive-item-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 0.5em;
+}
+
+.scb-archive-item-excerpt {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.scb-archive-item-link {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.scb-archive-item-link:hover {
+    background-color: #005177;
+}
+
+/* Common styles for both post types */
+.scb-single-servizi,
+.scb-single-location {
+    margin-bottom: 2em;
+}
+
+.scb-featured-image {
+    margin-bottom: 1.5em;
+}
+
+.scb-featured-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.scb-content {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+/* Servizi single page styles */
+.scb-single-servizi {
+    padding-top: 100px; /* Add 100px space at the top as requested */
+}
+
+.scb-servizi-title {
+    margin-bottom: 1.5em;
+    font-size: 2em;
+    line-height: 1.2;
+    color: #333;
+}
+
+.scb-categories,
+.scb-tags,
+.scb-service-locations {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.scb-categories h3,
+.scb-tags h3,
+.scb-service-locations h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+}
+
+.scb-categories ul,
+.scb-tags ul,
+.scb-service-locations ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.scb-categories li,
+.scb-tags li,
+.scb-service-locations li {
+    margin-bottom: 0.5em;
+}
+
+.scb-categories a,
+.scb-tags a,
+.scb-service-locations a {
+    text-decoration: none;
+}
+
+.scb-categories a:hover,
+.scb-tags a:hover,
+.scb-service-locations a:hover {
+    text-decoration: underline;
+}
+
+/* Location single page styles */
+.scb-single-location {
+    padding-top: 100px; /* Add 100px space at the top as requested */
+}
+
+.scb-location-title {
+    margin-bottom: 1.5em;
+    font-size: 2em;
+    line-height: 1.2;
+    color: #333;
+}
+
+.scb-location-coordinates,
+.scb-location-zones,
+.scb-location-services {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.scb-location-coordinates h3,
+.scb-location-zones h3,
+.scb-location-services h3 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+}
+
+.scb-location-coordinates p {
+    margin: 0.5em 0;
+}
+
+.scb-location-zones ul,
+.scb-location-services ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.scb-location-zones li,
+.scb-location-services li {
+    margin-bottom: 0.5em;
+}
+
+.scb-location-zones a,
+.scb-location-services a {
+    text-decoration: none;
+}
+
+.scb-location-zones a:hover,
+.scb-location-services a:hover {
+    text-decoration: underline;
+}
+
+/* Contact us button in location services */
+.scb-contact-button {
+    display: inline-block;
+    margin-top: 0.5em;
+    padding: 0.4em 0.8em;
+    background-color: #0073aa;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 3px;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.scb-contact-button:hover {
+    background-color: #005177;
+    text-decoration: none !important;
+}
+
+/* Service divider line */
+.scb-service-divider {
+    margin: 0.8em 0;
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+/* Details button styling */
+.scb-servizi-service-link {
+    display: inline-block;
+    margin-top: 0.5em;
+    text-decoration: none;
+    color: #0073aa;
+    font-size: 0.9em;
+}
+
+.scb-servizi-service-link:hover {
+    color: #005177;
+    text-decoration: underline;
+}
+
+.scb-location-map {
+    margin-bottom: 1.5em;
+}
+
+#scb-single-location-map {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .scb-single-servizi,
+    .scb-single-location {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-gap: 2em;
+    }
+    
+    .scb-featured-image,
+    .scb-content {
+        grid-column: 1;
+    }
+    
+    .scb-categories,
+    .scb-tags,
+    .scb-service-locations,
+    .scb-location-coordinates,
+    .scb-location-zones,
+    .scb-location-services,
+    .scb-location-map {
+        grid-column: 2;
+    }
+}

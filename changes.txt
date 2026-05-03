@@ -1,0 +1,13 @@
+Changes made to implement the issue requirements:
+
+1. Modified cpt-servizi.php to add h1 title before featured image for single service (servizi) CPT:
+   - Added code to display the title in an h1 tag with class "scb-servizi-title" before the featured image
+   - This is similar to what was previously done for the location CPT
+
+2. Modified servizi-pages.css to add 100px space at the top of single service pages:
+   - Added padding-top: 100px to the .scb-single-servizi class
+   - Added styling for the .scb-servizi-title class to match the styling of the location title
+
+These changes ensure that single service pages have the same layout as single location pages, with:
+- 100 pixels of space at the top
+- The title in an h1 tag before the featured image

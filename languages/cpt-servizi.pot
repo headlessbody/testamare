@@ -1,0 +1,646 @@
+# Copyright (C) 2025 Stefano Callisto Bassi
+# This file is distributed under the GPL2.
+msgid ""
+msgstr ""
+"Project-Id-Version: CPT Servizi 1.0.1\n"
+"Report-Msgid-Bugs-To: https://solferino3.it\n"
+"POT-Creation-Date: 2025-07-27T00:24:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: cpt-servizi\n"
+
+#. Plugin Name of the plugin
+msgid "CPT Servizi"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://solferino3.it"
+msgstr ""
+
+#. Description of the plugin
+msgid "Plugin per la creazione di un Custom Post Type \"Servizi\" con categorie, zona geografica e tag."
+msgstr ""
+
+#. Author of the plugin
+msgid "Stefano Callisto Bassi"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://solferino3.it"
+msgstr ""
+
+#: cpt-servizi.php:21
+msgctxt "Post Type General Name"
+msgid "Servizi"
+msgstr ""
+
+#: cpt-servizi.php:22
+msgctxt "Post Type Singular Name"
+msgid "Servizio"
+msgstr ""
+
+#: cpt-servizi.php:23
+msgid "Servizi"
+msgstr ""
+
+#: cpt-servizi.php:24
+msgid "Servizio"
+msgstr ""
+
+#: cpt-servizi.php:25
+msgid "Archivio Servizi"
+msgstr ""
+
+#: cpt-servizi.php:26
+msgid "Attributi Servizio"
+msgstr ""
+
+#: cpt-servizi.php:27
+msgid "Servizio Genitore:"
+msgstr ""
+
+#: cpt-servizi.php:28
+msgid "Tutti i Servizi"
+msgstr ""
+
+#: cpt-servizi.php:29
+msgid "Aggiungi Nuovo Servizio"
+msgstr ""
+
+#: cpt-servizi.php:30
+msgid "Aggiungi Nuovo"
+msgstr ""
+
+#: cpt-servizi.php:31
+msgid "Nuovo Servizio"
+msgstr ""
+
+#: cpt-servizi.php:32
+msgid "Modifica Servizio"
+msgstr ""
+
+#: cpt-servizi.php:33
+msgid "Aggiorna Servizio"
+msgstr ""
+
+#: cpt-servizi.php:34
+msgid "Visualizza Servizio"
+msgstr ""
+
+#: cpt-servizi.php:35
+msgid "Visualizza Servizi"
+msgstr ""
+
+#: cpt-servizi.php:36
+msgid "Cerca Servizio"
+msgstr ""
+
+#: cpt-servizi.php:37
+#: cpt-servizi.php:94
+#: cpt-servizi.php:150
+#: cpt-servizi.php:189
+#: cpt-servizi.php:228
+msgid "Non trovato"
+msgstr ""
+
+#: cpt-servizi.php:38
+#: cpt-servizi.php:95
+msgid "Non trovato nel cestino"
+msgstr ""
+
+#: cpt-servizi.php:39
+#: cpt-servizi.php:96
+msgid "Immagine in evidenza"
+msgstr ""
+
+#: cpt-servizi.php:40
+#: cpt-servizi.php:97
+msgid "Imposta immagine in evidenza"
+msgstr ""
+
+#: cpt-servizi.php:41
+#: cpt-servizi.php:98
+msgid "Rimuovi immagine in evidenza"
+msgstr ""
+
+#: cpt-servizi.php:42
+#: cpt-servizi.php:99
+msgid "Usa come immagine in evidenza"
+msgstr ""
+
+#: cpt-servizi.php:43
+msgid "Inserisci nel servizio"
+msgstr ""
+
+#: cpt-servizi.php:44
+msgid "Caricato in questo servizio"
+msgstr ""
+
+#: cpt-servizi.php:45
+msgid "Lista servizi"
+msgstr ""
+
+#: cpt-servizi.php:46
+msgid "Navigazione lista servizi"
+msgstr ""
+
+#: cpt-servizi.php:47
+msgid "Filtra lista servizi"
+msgstr ""
+
+#: cpt-servizi.php:51
+msgid "Servizio"
+msgstr ""
+
+#: cpt-servizi.php:52
+msgid "Servizi offerti"
+msgstr ""
+
+#: cpt-servizi.php:78
+msgctxt "Post Type General Name"
+msgid "Locations"
+msgstr ""
+
+#: cpt-servizi.php:79
+msgctxt "Post Type Singular Name"
+msgid "Location"
+msgstr ""
+
+#: cpt-servizi.php:80
+msgid "Locations"
+msgstr ""
+
+#: cpt-servizi.php:81
+msgid "Location"
+msgstr ""
+
+#: cpt-servizi.php:82
+msgid "Archivio Locations"
+msgstr ""
+
+#: cpt-servizi.php:83
+msgid "Attributi Location"
+msgstr ""
+
+#: cpt-servizi.php:84
+msgid "Location Genitore:"
+msgstr ""
+
+#: cpt-servizi.php:85
+msgid "Tutte le Locations"
+msgstr ""
+
+#: cpt-servizi.php:86
+msgid "Aggiungi Nuova Location"
+msgstr ""
+
+#: cpt-servizi.php:87
+msgid "Aggiungi Nuova"
+msgstr ""
+
+#: cpt-servizi.php:88
+msgid "Nuova Location"
+msgstr ""
+
+#: cpt-servizi.php:89
+msgid "Modifica Location"
+msgstr ""
+
+#: cpt-servizi.php:90
+msgid "Aggiorna Location"
+msgstr ""
+
+#: cpt-servizi.php:91
+msgid "Visualizza Location"
+msgstr ""
+
+#: cpt-servizi.php:92
+msgid "Visualizza Locations"
+msgstr ""
+
+#: cpt-servizi.php:93
+msgid "Cerca Location"
+msgstr ""
+
+#: cpt-servizi.php:100
+msgid "Inserisci nella location"
+msgstr ""
+
+#: cpt-servizi.php:101
+msgid "Caricato in questa location"
+msgstr ""
+
+#: cpt-servizi.php:102
+msgid "Lista locations"
+msgstr ""
+
+#: cpt-servizi.php:103
+msgid "Navigazione lista locations"
+msgstr ""
+
+#: cpt-servizi.php:104
+msgid "Filtra lista locations"
+msgstr ""
+
+#: cpt-servizi.php:108
+msgid "Location"
+msgstr ""
+
+#: cpt-servizi.php:109
+msgid "Posizioni geografiche per i servizi"
+msgstr ""
+
+#: cpt-servizi.php:134
+msgctxt "Taxonomy General Name"
+msgid "Categorie Servizi"
+msgstr ""
+
+#: cpt-servizi.php:135
+msgctxt "Taxonomy Singular Name"
+msgid "Categoria Servizio"
+msgstr ""
+
+#: cpt-servizi.php:136
+msgid "Categorie"
+msgstr ""
+
+#: cpt-servizi.php:137
+msgid "Tutte le Categorie"
+msgstr ""
+
+#: cpt-servizi.php:138
+msgid "Categoria Genitore"
+msgstr ""
+
+#: cpt-servizi.php:139
+msgid "Categoria Genitore:"
+msgstr ""
+
+#: cpt-servizi.php:140
+msgid "Nuova Categoria"
+msgstr ""
+
+#: cpt-servizi.php:141
+msgid "Aggiungi Nuova Categoria"
+msgstr ""
+
+#: cpt-servizi.php:142
+msgid "Modifica Categoria"
+msgstr ""
+
+#: cpt-servizi.php:143
+msgid "Aggiorna Categoria"
+msgstr ""
+
+#: cpt-servizi.php:144
+msgid "Visualizza Categoria"
+msgstr ""
+
+#: cpt-servizi.php:145
+msgid "Separa le categorie con virgole"
+msgstr ""
+
+#: cpt-servizi.php:146
+msgid "Aggiungi o rimuovi categorie"
+msgstr ""
+
+#: cpt-servizi.php:147
+msgid "Scegli tra le più usate"
+msgstr ""
+
+#: cpt-servizi.php:148
+msgid "Categorie popolari"
+msgstr ""
+
+#: cpt-servizi.php:149
+msgid "Cerca Categorie"
+msgstr ""
+
+#: cpt-servizi.php:151
+msgid "Nessuna categoria"
+msgstr ""
+
+#: cpt-servizi.php:152
+msgid "Lista categorie"
+msgstr ""
+
+#: cpt-servizi.php:153
+msgid "Navigazione lista categorie"
+msgstr ""
+
+#: cpt-servizi.php:173
+msgctxt "Taxonomy General Name"
+msgid "Zone Geografiche"
+msgstr ""
+
+#: cpt-servizi.php:174
+msgctxt "Taxonomy Singular Name"
+msgid "Zona Geografica"
+msgstr ""
+
+#: cpt-servizi.php:175
+msgid "Zone Geografiche"
+msgstr ""
+
+#: cpt-servizi.php:176
+msgid "Tutte le Zone"
+msgstr ""
+
+#: cpt-servizi.php:177
+msgid "Zona Genitore"
+msgstr ""
+
+#: cpt-servizi.php:178
+msgid "Zona Genitore:"
+msgstr ""
+
+#: cpt-servizi.php:179
+msgid "Nuova Zona"
+msgstr ""
+
+#: cpt-servizi.php:180
+msgid "Aggiungi Nuova Zona"
+msgstr ""
+
+#: cpt-servizi.php:181
+msgid "Modifica Zona"
+msgstr ""
+
+#: cpt-servizi.php:182
+msgid "Aggiorna Zona"
+msgstr ""
+
+#: cpt-servizi.php:183
+msgid "Visualizza Zona"
+msgstr ""
+
+#: cpt-servizi.php:184
+msgid "Separa le zone con virgole"
+msgstr ""
+
+#: cpt-servizi.php:185
+msgid "Aggiungi o rimuovi zone"
+msgstr ""
+
+#: cpt-servizi.php:186
+msgid "Scegli tra le più usate"
+msgstr ""
+
+#: cpt-servizi.php:187
+msgid "Zone popolari"
+msgstr ""
+
+#: cpt-servizi.php:188
+msgid "Cerca Zone"
+msgstr ""
+
+#: cpt-servizi.php:190
+msgid "Nessuna zona"
+msgstr ""
+
+#: cpt-servizi.php:191
+msgid "Lista zone"
+msgstr ""
+
+#: cpt-servizi.php:192
+msgid "Navigazione lista zone"
+msgstr ""
+
+#: cpt-servizi.php:212
+msgctxt "Taxonomy General Name"
+msgid "Tag Servizi"
+msgstr ""
+
+#: cpt-servizi.php:213
+msgctxt "Taxonomy Singular Name"
+msgid "Tag Servizio"
+msgstr ""
+
+#: cpt-servizi.php:214
+msgid "Tag"
+msgstr ""
+
+#: cpt-servizi.php:215
+msgid "Tutti i Tag"
+msgstr ""
+
+#: cpt-servizi.php:216
+msgid "Tag Genitore"
+msgstr ""
+
+#: cpt-servizi.php:217
+msgid "Tag Genitore:"
+msgstr ""
+
+#: cpt-servizi.php:218
+msgid "Nuovo Tag"
+msgstr ""
+
+#: cpt-servizi.php:219
+msgid "Aggiungi Nuovo Tag"
+msgstr ""
+
+#: cpt-servizi.php:220
+msgid "Modifica Tag"
+msgstr ""
+
+#: cpt-servizi.php:221
+msgid "Aggiorna Tag"
+msgstr ""
+
+#: cpt-servizi.php:222
+msgid "Visualizza Tag"
+msgstr ""
+
+#: cpt-servizi.php:223
+msgid "Separa i tag con virgole"
+msgstr ""
+
+#: cpt-servizi.php:224
+msgid "Aggiungi o rimuovi tag"
+msgstr ""
+
+#: cpt-servizi.php:225
+msgid "Scegli tra i più usati"
+msgstr ""
+
+#: cpt-servizi.php:226
+msgid "Tag popolari"
+msgstr ""
+
+#: cpt-servizi.php:227
+msgid "Cerca Tag"
+msgstr ""
+
+#: cpt-servizi.php:229
+msgid "Nessun tag"
+msgstr ""
+
+#: cpt-servizi.php:230
+msgid "Lista tag"
+msgstr ""
+
+#: cpt-servizi.php:231
+msgid "Navigazione lista tag"
+msgstr ""
+
+#: cpt-servizi.php:252
+msgid "Coordinate Geografiche"
+msgstr ""
+
+#: cpt-servizi.php:269
+msgid "Latitudine:"
+msgstr ""
+
+#: cpt-servizi.php:273
+msgid "Longitudine:"
+msgstr ""
+
+#: cpt-servizi.php:330
+msgid "Seleziona Location"
+msgstr ""
+
+#: cpt-servizi.php:355
+msgid "Seleziona una location:"
+msgstr ""
+
+#: cpt-servizi.php:357
+msgid "-- Seleziona --"
+msgstr ""
+
+#: cpt-servizi.php:432
+msgid "Tutte le zone geografiche"
+msgstr ""
+
+#: cpt-servizi.php:439
+msgid "Tutte le categorie"
+msgstr ""
+
+#: cpt-servizi.php:445
+msgid "Filtra"
+msgstr ""
+
+#: cpt-servizi.php:453
+msgid "Seleziona una location sulla mappa per visualizzare i dettagli"
+msgstr ""
+
+#: cpt-servizi.php:461
+msgid "Servizi disponibili"
+msgstr ""
+
+#: cpt-servizi.php:720
+msgid "Map container not found! Make sure the element with ID \"scb-servizi-map\" exists."
+msgstr ""
+
+#: cpt-servizi.php:721
+msgid "Leaflet library not loaded! Make sure the Leaflet.js script is properly included."
+msgstr ""
+
+#: cpt-servizi.php:722
+msgid "Map container element not found in the DOM!"
+msgstr ""
+
+#: cpt-servizi.php:723
+msgid "markersLayer is not defined! Make sure it was created in initMap."
+msgstr ""
+
+#: cpt-servizi.php:724
+msgid "No data available for markers"
+msgstr ""
+
+#: cpt-servizi.php:725
+msgid "No markers were added to the map. Check the location data."
+msgstr ""
+
+#: cpt-servizi.php:726
+msgid "Invalid location object provided to displayLocationDetails"
+msgstr ""
+
+#: cpt-servizi.php:727
+msgid "Sidebar elements not found in the DOM!"
+msgstr ""
+
+#: cpt-servizi.php:728
+msgid "Location title element not found!"
+msgstr ""
+
+#: cpt-servizi.php:729
+msgid "Location image element not found!"
+msgstr ""
+
+#: cpt-servizi.php:730
+msgid "Location description element not found!"
+msgstr ""
+
+#: cpt-servizi.php:731
+msgid "Location metadata element not found!"
+msgstr ""
+
+#: cpt-servizi.php:732
+msgid "Services list element not found!"
+msgstr ""
+
+#: cpt-servizi.php:733
+msgid "Filter elements not found in the DOM!"
+msgstr ""
+
+#: cpt-servizi.php:734
+msgid "Map element not found in the DOM!"
+msgstr ""
+
+#: cpt-servizi.php:735
+msgid "AJAX variables not properly defined!"
+msgstr ""
+
+#: cpt-servizi.php:736
+msgid "Empty response received from server"
+msgstr ""
+
+#: cpt-servizi.php:737
+msgid "Server returned error:"
+msgstr ""
+
+#: cpt-servizi.php:738
+msgid "No data in response:"
+msgstr ""
+
+#: cpt-servizi.php:739
+msgid "Invalid AJAX response format:"
+msgstr ""
+
+#: cpt-servizi.php:742
+msgid "Per zoomare, tieni premuto <strong>Ctrl</strong> (o <strong>⌘ Cmd</strong> su Mac) mentre usi la rotellina del mouse"
+msgstr ""
+
+#: cpt-servizi.php:743
+msgid "Categorie:"
+msgstr ""
+
+#: cpt-servizi.php:744
+msgid "Zone:"
+msgstr ""
+
+#: cpt-servizi.php:745
+msgid "No description available"
+msgstr ""
+
+#: cpt-servizi.php:746
+msgid "Dettagli"
+msgstr ""
+
+#: cpt-servizi.php:747
+msgid "Nessun servizio disponibile in questa location."
+msgstr ""
+
+#: cpt-servizi.php:748
+msgid "Unnamed Location"
+msgstr ""
+
+#: cpt-servizi.php:749
+msgid "Location Image"
+msgstr ""

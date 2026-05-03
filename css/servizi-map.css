@@ -1,0 +1,793 @@
+/**
+ * Servizi Map CSS
+ * Styles for the world map, filters, and location details sidebar
+ */
+
+/* Apply a consistent box model to all elements */
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/* Main container */
+.scb-servizi-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Map and details container */
+.scb-servizi-map-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: stretch; /* Ensure children stretch to fill the container height */
+    min-height: 500px; /* Minimum height for the container */
+}
+
+/* Map container */
+#scb-servizi-map {
+    width: 60%;
+    min-height: 500px; /* Minimum height that can grow with content */
+    height: 100%; /* Fill the height of the container */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    flex: 3;
+    box-sizing: border-box; /* Ensure consistent box model with location details */
+    transition: height 0.3s ease; /* Smooth transition when height changes */
+}
+
+/* Location details sidebar */
+#scb-servizi-location-details {
+    width: calc(40% - 20px);
+    min-height: 500px; /* Minimum height to match map's height */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-y: visible; /* Show all content without scrollbars */
+    background-color: #f9f9f9;
+    flex: 2;
+    box-sizing: border-box; /* Ensure padding is included in height calculation */
+    display: flex; /* Use flexbox for the details panel */
+    flex-direction: column; /* Stack children vertically */
+}
+
+/* Location placeholder */
+.scb-servizi-location-placeholder {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Location content */
+.scb-servizi-location-content {
+    padding: 0 0 10px 0;
+}
+
+/* Location title */
+.scb-servizi-location-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: #0073aa;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Location details button */
+.scb-servizi-location-details-button {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-left: 10px;
+    white-space: nowrap;
+}
+
+.scb-servizi-location-title-overlay .scb-servizi-location-details-button {
+    margin-left: 15px;
+    font-size: 14px;
+    padding: 6px 12px;
+    background-color: rgba(0, 115, 170, 0.8);
+    transition: background-color 0.3s ease;
+}
+
+.scb-servizi-location-details-button:hover,
+.scb-servizi-location-title-overlay .scb-servizi-location-details-button:hover {
+    background-color: #005177;
+    color: white;
+    text-decoration: none;
+}
+
+/* Location image with background - 3:1.5 aspect ratio */
+.scb-servizi-location-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 50%; /* 1.5/3 = 0.5 = 50% for 3:1.5 aspect ratio */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    margin-bottom: 15px;
+    position: relative;
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    overflow: hidden; /* Ensure content doesn't overflow the container */
+}
+
+/* For backward compatibility with img tag */
+.scb-servizi-location-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+}
+
+/* Title overlay at the top of the background image */
+.scb-servizi-location-title-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: #000000;
+    padding: 15px;
+    font-size: 18px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.scb-servizi-location-title-overlay h2 {
+    margin: 0;
+    padding: 0;
+    color: #0489E2;
+    font-family: "Inter", Sans-serif;
+    font-size: 1em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* Metadata overlay on the background image */
+.scb-servizi-location-meta-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: black;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* Icons for location metadata */
+.scb-icon {
+    display: inline-block;
+    color: black;
+    font-size: 18px;
+    font-style: normal;
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.scb-icon-category {
+    /* Hamburger menu icon */
+}
+
+.scb-icon-zone {
+    /* Fisheye icon */
+}
+
+.scb-icon-country {
+    /* Flag icon */
+}
+
+.scb-servizi-location-meta-overlay p {
+    margin: 5px 0;
+}
+
+.scb-servizi-location-meta-overlay strong {
+    color: #ffffff;
+}
+
+/* Location description */
+.scb-servizi-location-description {
+    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 15px;
+}
+
+/* Location metadata (for when there's no background image) */
+.scb-servizi-location-meta {
+    margin-bottom: 20px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.scb-servizi-location-meta p {
+    margin: 5px 0;
+}
+
+/* Services section */
+.scb-servizi-location-services h3 {
+    margin-bottom: 10px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    font-family: "Inter", Sans-serif;
+    font-size: 0.8em;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* Services list */
+.scb-servizi-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: 15px;
+}
+
+.scb-servizi-service-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.scb-servizi-service-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.scb-servizi-service-title {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+.scb-servizi-service-title a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.scb-servizi-service-title a:hover {
+    text-decoration: underline;
+}
+
+.scb-servizi-service-categories {
+    margin: 3px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Make sure icons in service categories are visible */
+.scb-servizi-service-categories .scb-icon {
+    color: #666;
+    font-size: 14px;
+}
+
+.scb-servizi-service-excerpt {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.scb-servizi-service-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 5px;
+    white-space: nowrap;
+    transition: background-color 0.3s ease;
+}
+
+.scb-servizi-service-link:hover {
+    background-color: #005177;
+    color: white;
+    text-decoration: none;
+}
+
+/* Loading indicator */
+#scb-servizi-map.loading:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+}
+
+#scb-servizi-map.loading:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Filter container */
+.scb-servizi-filters {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Filter dropdowns */
+.scb-servizi-filters select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    min-width: 200px;
+    flex: 1;
+}
+
+/* Filter button */
+#scb-servizi-filter-button {
+    padding: 8px 16px;
+    background-color: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#scb-servizi-filter-button:hover {
+    background-color: #005177;
+}
+
+/* Reset button */
+#scb-servizi-reset-button {
+    padding: 8px 16px;
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+    display: inline-flex;
+    align-items: center;
+}
+
+#scb-servizi-reset-button:hover {
+    background-color: #e0e0e0;
+}
+
+#scb-servizi-reset-button .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+/* Popup styles */
+.scb-servizi-popup {
+    max-width: 400px;
+}
+
+.scb-servizi-popup-thumbnail {
+    margin-bottom: 10px;
+}
+
+.scb-servizi-popup-thumbnail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Location title and content */
+.scb-servizi-popup-content h3.scb-location-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #0073aa;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 5px;
+}
+
+.scb-location-content {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.scb-servizi-popup-content h3 a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.scb-servizi-popup-content h3 a:hover {
+    text-decoration: underline;
+}
+
+.scb-servizi-popup-categories,
+.scb-servizi-popup-zones {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.scb-servizi-popup-excerpt {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Services list */
+.scb-location-services h4 {
+    margin: 15px 0 10px;
+    font-size: 16px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.scb-services-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scb-service-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.scb-service-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.scb-service-item h5 {
+    margin: 0 0 5px;
+    font-size: 16px;
+}
+
+.scb-service-item h5 a {
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.scb-service-item h5 a:hover {
+    text-decoration: underline;
+}
+
+.scb-service-categories {
+    margin: 3px 0;
+    font-size: 12px;
+    color: #666;
+}
+
+.scb-service-excerpt {
+    margin: 5px 0;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.scb-service-link {
+    display: inline-block;
+    padding: 3px 8px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.scb-closest-marker-wrapper {
+    background: transparent;
+    border: 0;
+}
+
+.scb-closest-marker {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scb-closest-marker-core {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--scb-closest-marker-color, #e74c3c);
+    border: 3px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    display: block;
+}
+
+.scb-closest-marker--pin .scb-closest-marker-core {
+    width: 18px;
+    height: 18px;
+}
+
+.scb-closest-marker--pin {
+    width: 25px;
+    height: 41px;
+    display: block;
+}
+
+.scb-closest-marker-pin {
+    width: 25px;
+    height: 41px;
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.scb-closest-marker-pin-body {
+    fill: currentColor;
+    stroke: rgba(0, 0, 0, 0.18);
+    stroke-width: 1;
+}
+
+.scb-closest-marker-pin-core {
+    fill: #ffffff;
+}
+
+.scb-closest-marker--selected .scb-closest-marker-core {
+    transform: scale(1.05);
+}
+
+.scb-closest-marker--ring::before,
+.scb-closest-marker--pulse::before {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 999px;
+    border: 3px solid var(--scb-closest-marker-color, #e74c3c);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.scb-closest-marker--pulse::before {
+    animation: scbClosestMarkerPulse 1.8s ease-out infinite;
+}
+
+@keyframes scbClosestMarkerPulse {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.95;
+    }
+    70% {
+        transform: scale(1.25);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1.35);
+        opacity: 0;
+    }
+}
+
+.scb-service-link:hover {
+    background-color: #005177;
+}
+
+.scb-servizi-popup-link {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.scb-servizi-popup-link:hover {
+    background-color: #005177;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    /* Stack layout on tablets and mobile */
+    .scb-servizi-map-container {
+        flex-direction: column;
+        min-height: auto; /* Reset min-height for stacked layout */
+    }
+    
+    #scb-servizi-map {
+        width: 100%;
+        min-height: 450px;
+        height: auto; /* Allow height to be determined by content in stacked layout */
+        margin-bottom: 20px;
+    }
+    
+    #scb-servizi-location-details {
+        width: 100%;
+        min-height: 300px;
+        /* Remove max-height to allow content to be fully visible */
+        overflow-y: visible;
+    }
+    
+    /* In stacked layout, we don't need to match heights */
+    /* The adjustMapHeight function will detect this layout and not adjust heights */
+}
+
+@media (max-width: 768px) {
+    .scb-servizi-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .scb-servizi-filters select {
+        width: 100%;
+        margin-bottom: 10px;
+        height: 44px; /* Larger height for better touch targets */
+        font-size: 16px; /* Larger font size for better readability */
+    }
+    
+    #scb-servizi-filter-button,
+    #scb-servizi-reset-button {
+        height: 44px; /* Larger height for better touch targets */
+        font-size: 16px; /* Larger font size for better readability */
+        padding: 10px 16px; /* Increased padding for better touch targets */
+        width: 100%; /* Full width buttons on mobile */
+        margin: 5px 0; /* Add some spacing between buttons */
+    }
+    
+    #scb-servizi-map {
+        min-height: 400px; /* Use min-height instead of fixed height */
+        margin-left: 0; /* Remove side margins on mobile */
+        margin-right: 0; /* Remove side margins on mobile */
+        width: 100%; /* Full width on mobile */
+    }
+    
+    .scb-servizi-location-title {
+        font-size: 20px;
+    }
+    
+    .scb-servizi-location-services h3 {
+        font-size: 16px;
+        padding: 12px 15px; /* Increased padding for better readability */
+    }
+    
+    /* Improve service items display */
+    .scb-servizi-service-item {
+        padding: 15px 0; /* Increased padding for better spacing */
+    }
+    
+    .scb-servizi-service-title {
+        font-size: 18px; /* Larger font size for better readability */
+    }
+    
+    .scb-servizi-service-link {
+        display: inline-block;
+        padding: 10px 16px; /* Increased padding for better touch targets */
+        font-size: 14px; /* Larger font size for better readability */
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #scb-servizi-map {
+        min-height: 300px;
+        margin-left: 0; /* Remove side margins on small mobile */
+        margin-right: 0; /* Remove side margins on small mobile */
+        width: 100%; /* Full width on small mobile */
+    }
+    
+    #scb-servizi-location-details {
+        min-height: 250px;
+        /* Remove max-height to allow content to be fully visible */
+        overflow-y: visible;
+        padding: 10px; /* Reduced padding for small screens */
+    }
+    
+    .scb-servizi-popup {
+        max-width: 200px;
+    }
+    
+    .scb-servizi-location-title {
+        font-size: 18px;
+    }
+    
+    /* Optimize location image and title overlay for mobile */
+    .scb-servizi-location-image {
+        padding-bottom: 60%; /* Increased aspect ratio for better visibility on mobile */
+    }
+    
+    .scb-servizi-location-title-overlay {
+        padding: 10px; /* Reduced padding for small screens */
+    }
+    
+    .scb-servizi-location-title-overlay h2 {
+        font-size: 18px; /* Adjusted font size for small screens */
+    }
+    
+    .scb-servizi-location-meta-overlay {
+        padding: 8px; /* Reduced padding for small screens */
+        font-size: 13px; /* Smaller font size for metadata on small screens */
+    }
+    
+    /* Enhance services list for mobile */
+    .scb-servizi-services-list {
+        padding: 10px; /* Reduced padding for small screens */
+    }
+    
+    .scb-servizi-service-item {
+        margin-bottom: 12px; /* Reduced margin for small screens */
+        padding-bottom: 12px; /* Reduced padding for small screens */
+    }
+    
+    /* Make buttons more prominent on mobile */
+    .scb-servizi-service-link,
+    .scb-servizi-location-details-button {
+        display: block; /* Full width buttons */
+        text-align: center;
+        margin-top: 8px;
+    }
+}
+
+/* Zoom tooltip styles */
+.scb-zoom-tooltip {
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.scb-zoom-tooltip-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #333;
+    max-width: 250px;
+    pointer-events: none;
+    border: 1px solid #ddd;
+}
+
+@media (max-width: 480px) {
+    .scb-zoom-tooltip-content {
+        font-size: 12px;
+        padding: 6px 10px;
+        max-width: 200px;
+    }
+}
