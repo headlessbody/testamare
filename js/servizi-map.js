@@ -93,6 +93,66 @@
         }
     }
 
+    function isMobileDeviceContext() {
+        if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+            if (window.matchMedia('(max-width: 992px)').matches || window.matchMedia('(pointer: coarse)').matches) {
+                return true;
+            }
+        }
+
+        const ua = (typeof navigator !== 'undefined' && navigator.userAgent) ? navigator.userAgent : '';
+        return /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+    }
+
+    function isCellularConnection() {
+        if (typeof navigator === 'undefined') {
+            return false;
+        }
+
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        if (!connection) {
+            return false;
+        }
+
+        return connection.type === 'cellular';
+    }
+
+    function shouldPreferDeviceGeolocation() {
+        return isMobileDeviceContext() || isCellularConnection();
+    }
+
+    function buildBrowserLocation(position, strategy) {
+        return {
+            latitude: position.coords.latitude.toString(),
+            longitude: position.coords.longitude.toString(),
+            accuracy: typeof position.coords.accuracy === 'number' ? position.coords.accuracy : null,
+            provider: 'browser-gps',
+            strategy: strategy
+        };
+    }
+
+    function requestBrowserPosition(options, strategy, onSuccess, onError) {
+        navigator.geolocation.getCurrentPosition(
+            function(position) {
+                console.log(
+                    'SUCCESS: Browser geolocation obtained via',
+                    strategy + ':',
+                    position.coords.latitude,
+                    position.coords.longitude,
+                    '(accuracy:',
+                    position.coords.accuracy,
+                    'meters)'
+                );
+                onSuccess(buildBrowserLocation(position, strategy));
+            },
+            function(error) {
+                console.warn('Browser geolocation failed via', strategy + ':', error.code, error.message);
+                onError(error);
+            },
+            options
+        );
+    }
+
     // Hard-disable any legacy client cache entry to avoid stale cross-network behavior.
     sessionStorage.removeItem('scb_user_geolocation');
     
@@ -113,47 +173,58 @@
 
         // 1. Try Browser Geolocation API first (GPS/WiFi)
         if ("geolocation" in navigator) {
-            console.log('ALERT: REQUESTING GPS PERMISSION FROM BROWSER...');
-            
-            // Set a flag to detect if it's taking too long
-            let gpsResolved = false;
-            const gpsTimeout = setTimeout(function() {
-                if (!gpsResolved) {
-                    console.warn('GPS Request timed out or is waiting for user. Falling back to IP for now...');
-                    performIPGeolocation();
-                }
-            }, 7000); // Wait 7 seconds for user interaction
+            const preferDeviceGeolocation = shouldPreferDeviceGeolocation();
+            const highAccuracyTimeout = preferDeviceGeolocation ? 20000 : 12000;
+            const balancedTimeout = preferDeviceGeolocation ? 12000 : 8000;
 
-            navigator.geolocation.getCurrentPosition(
-                function(position) {
-                    gpsResolved = true;
-                    clearTimeout(gpsTimeout);
-                    console.log('SUCCESS: GPS Position obtained:', position.coords.latitude, position.coords.longitude);
-                    const gpsLocation = {
-                        latitude: position.coords.latitude.toString(),
-                        longitude: position.coords.longitude.toString(),
-                        provider: 'browser-gps'
-                    };
-                    
-                    // Update global data object
+            console.log('ALERT: REQUESTING DEVICE GEOLOCATION FROM BROWSER...');
+            console.log('Mobile/cellular context detected:', preferDeviceGeolocation);
+
+            requestBrowserPosition(
+                {
+                    enableHighAccuracy: true,
+                    timeout: highAccuracyTimeout,
+                    maxAge: 0
+                },
+                'high-accuracy',
+                function(gpsLocation) {
                     if (scbServiziMapData) {
                         scbServiziMapData.user_location = gpsLocation;
                     }
-                    
+
                     processUserLocation(gpsLocation);
                     console.groupEnd();
                 },
                 function(error) {
-                    gpsResolved = true;
-                    clearTimeout(gpsTimeout);
-                    console.warn('GPS PERMISSION DENIED or ERROR:', error.code, error.message);
-                    console.log('Falling back to IP Geolocation...');
-                    performIPGeolocation();
-                },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 6000,
-                    maxAge: 0 // Force fresh position
+                    if (error.code === error.PERMISSION_DENIED) {
+                        console.warn('Browser geolocation permission denied.');
+                        console.log('Falling back to IP Geolocation as last resort...');
+                        performIPGeolocation();
+                        return;
+                    }
+
+                    console.log('Retrying browser geolocation with balanced accuracy settings...');
+                    requestBrowserPosition(
+                        {
+                            enableHighAccuracy: false,
+                            timeout: balancedTimeout,
+                            maxAge: 300000
+                        },
+                        'balanced-accuracy',
+                        function(gpsLocation) {
+                            if (scbServiziMapData) {
+                                scbServiziMapData.user_location = gpsLocation;
+                            }
+
+                            processUserLocation(gpsLocation);
+                            console.groupEnd();
+                        },
+                        function(secondError) {
+                            console.warn('Second browser geolocation attempt failed:', secondError.code, secondError.message);
+                            console.log('Falling back to IP Geolocation as last resort...');
+                            performIPGeolocation();
+                        }
+                    );
                 }
             );
         } else {
@@ -223,6 +294,7 @@
             if (response.success && response.data) {
                 const data = response.data;
                 if (data.latitude && data.longitude) {
+                    data.is_approximate = true;
                     console.log('Valid geolocation received:', data.latitude, data.longitude, 'via provider:', data.provider || 'unknown');
                     
                     // Update global data object
@@ -1095,7 +1167,7 @@
                 }
                 
                 servicesListElement.html(servicesHTML);
-            } else {
+            } else if (showServicesInMap) {
                 console.error('Services list element not found!');
             }
             

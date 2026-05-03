@@ -215,3 +215,24 @@ Per testare queste modifiche:
 - File coinvolti:
   - `cpt-servizi.php` (localizzazione variabili JS, salvataggio e UI dell'impostazione)
   - `js/servizi-map.js` (render condizionale del pulsante Dettaglio)
+
+## Aggiornamenti recenti
+
+### Geolocalizzazione piu affidabile su mobile e roaming
+
+- La logica della mappa ora privilegia la geolocalizzazione reale del device tramite browser.
+- Il flusso prova prima una richiesta ad alta precisione e, se necessario, un secondo tentativo bilanciato.
+- Il fallback IP non e piu il percorso principale: viene usato solo come ultima risorsa quando il browser non restituisce coordinate utili.
+- Questo riduce i casi in cui un utente in roaming viene localizzato nel paese della SIM invece che nella posizione reale.
+
+### Selezione automatica della location piu vicina
+
+- All'apertura della pagina contenente lo shortcode `[servizi_map]`, il plugin calcola le distanze tra la posizione dell'utente e tutte le location disponibili.
+- La location piu vicina viene selezionata automaticamente, il marker viene evidenziato e il pannello laterale viene aperto.
+- Lo stesso comportamento viene mantenuto anche dopo il filtraggio AJAX.
+
+### Pulizia del backend e dei log
+
+- Rimosso il notice admin `CPT Services: Update Required` dal backend.
+- Lasciata disponibile l'azione `Update Permalinks` nel menu admin bar.
+- Corretto un falso errore in console: `Services list element not found!` ora compare solo quando la lista servizi dovrebbe essere renderizzata davvero.

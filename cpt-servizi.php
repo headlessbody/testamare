@@ -1848,8 +1848,7 @@ function scb_ajax_add_featured_image() {
     wp_die();
 }
 
-// Add admin notice and admin bar button for flushing rewrite rules
-add_action('admin_notices', 'scb_servizi_admin_notice');
+// Add admin bar button for flushing rewrite rules
 add_action('admin_bar_menu', 'scb_servizi_admin_bar_button', 100);
 add_action('admin_init', 'scb_servizi_flush_rewrite_rules');
 

@@ -38,6 +38,8 @@ Con supporto per:
 - Visualizzazione delle locations su una mappa mondiale interattiva
 - Ogni marker sulla mappa rappresenta una location, non un singolo servizio
 - Pannello laterale che mostra i dettagli della location selezionata
+- Selezione automatica della location piu vicina all'utente all'apertura della pagina e dopo i filtri
+- Priorita alla geolocalizzazione reale del device (browser GPS/Wi-Fi/cella) con fallback IP solo come ultima risorsa
 - Filtri AJAX per categoria e zona geografica
 - Zoom sulla mappa attivabile solo tenendo premuto il tasto Control (o Command su Mac) con tooltip informativo
 - Design responsive per tutti i dispositivi (layout a colonne su desktop, impilato su mobile)
@@ -74,6 +76,9 @@ Puoi personalizzare l'altezza e la larghezza della mappa:
 
 #### Come Funziona la Mappa
 - Sulla mappa viene visualizzato un marker per ogni location che ha almeno un servizio associato
+- All'apertura della pagina il plugin prova prima a ottenere la posizione reale dell'utente dal browser
+- Se la posizione del device e disponibile, il sistema calcola le distanze e apre automaticamente il porto/location piu vicino
+- Se la geolocalizzazione del browser non restituisce coordinate utili, il sistema usa la geolocalizzazione IP come ultima risorsa
 - Cliccando su un marker, nel pannello laterale vengono mostrati:
   - Informazioni sulla location (titolo, descrizione)
   - Immagine in evidenza della location come sfondo con categorie, zone e nazione sovrapposte
@@ -140,6 +145,7 @@ Il plugin è completamente compatibile con TranslatePress:
 - Le richieste AJAX sono gestite tramite l'API WordPress
 - L'internazionalizzazione è implementata utilizzando le funzioni standard di WordPress
 - Le stringhe JavaScript sono tradotte tramite `wp_localize_script()`
+- L'avviso admin "CPT Services: Update Required" e stato rimosso; resta disponibile l'azione dal menu admin bar
 
 ## Licenza
 GPL2
